@@ -16,7 +16,7 @@ movies = Hash.new
 
 input_csvs.each do | csv_path |
 	puts "Parsing: #{csv_path}..."
-	CSV.foreach(csv_path, headers: true) do |csv_row, i| 
+	CSV.foreach(csv_path, headers: true, encoding: "iso-8859-1") do |csv_row, i| 
 		unless movies.include?(csv_row["imdburl"])
 			movies[csv_row["imdburl"]] = {"imdburl" => csv_row["imdburl"], "title" => csv_row["title"], "year" => csv_row["year"]}
 		end
